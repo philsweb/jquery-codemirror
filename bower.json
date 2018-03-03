@@ -1,0 +1,26 @@
+{
+  "name": "philsweb.jquery-codemirror",
+  "homepage": "https://github.com/philsweb/philsweb.jquery-codemirror",
+  "authors": [
+    "Philipp Nikolajev <philipp.nikolajev@gmail.com>"
+  ],
+  "description": "jQuery plugin, CodeMirror wrapper. codemirror.net",
+  "main": "",
+  "keywords": [
+    "jquery",
+    "javascript",
+    "codemirror",
+    "wrapper"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
+}
