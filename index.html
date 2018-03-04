@@ -1,0 +1,51 @@
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="bower_components/codemirror/lib/codemirror.js"></script>
+<link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+<script src="bower_components/codemirror/mode/xml/xml.js"></script>
+
+<script src="philsweb.jquery.codemirror.js"></script>
+
+<div class="margin10 code-snippet" data-test style="width:250px;height:300px;border:1px solid black;"></div>
+
+<div class="margin10 code-snippet" style="width:350px;height:150px;border:1px solid black;"></div>
+
+<div class="margin10 code-snippet" data-no-lines style="width:500px;height:100px;border:1px solid black;"></div>
+
+<style>
+    .margin10 {
+        margin: 10px;
+    }
+
+    .CodeMirror {
+        height: inherit;
+    }
+</style>
+
+<script>
+    $(function () {
+
+        $('.code-snippet').codemirror();
+
+        $('.code-snippet[data-test]').setValue('Any string');
+
+        console.log($('.code-snippet[data-test]').getValue());
+
+        var elements = $('.code-snippet');
+
+        var increment = 1;
+
+        elements.each(function (key, element) {
+
+            $.data(element, 'codemirror').setValue('Any' + increment++);
+            $(element).setValue('New' + increment++);
+
+        });
+
+        $('.code-snippet[data-no-lines]').setOption('lineNumbers', false);
+
+        $('.code-snippet[data-no-lines]').setOptions({lineNumbers: true, readOnly: true});
+
+        $.data($('.code-snippet[data-no-lines]')[0], 'codemirror').focus();
+    });
+</script>
