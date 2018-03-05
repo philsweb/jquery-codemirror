@@ -8,7 +8,8 @@
 
 <div class="margin10 code-snippet" data-test style="width:250px;height:300px;border:1px solid black;"></div>
 
-<div class="margin10 code-snippet" style="width:350px;height:150px;border:1px solid black;"></div>
+<div class="margin10 code-snippet" data-codemirror-config='{"showCursorWhenSelecting": true, "readOnly": true, "value": "Hello world"}'
+     style="width:350px;height:150px;border:1px solid black;"></div>
 
 <div class="margin10 code-snippet" data-no-lines style="width:500px;height:100px;border:1px solid black;"></div>
 
@@ -25,7 +26,7 @@
 <script>
     $(function () {
 
-        $('.code-snippet').codemirrorInit();
+        $('.code-snippet').codemirrorInit({readOnly: "nocursor"});
 
         $('.code-snippet[data-test]').codemirror().setValue('Any string');
 
