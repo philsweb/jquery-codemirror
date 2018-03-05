@@ -70,6 +70,15 @@
 
         }
 
+        function copyToClipboard(value) {
+            var $temp = $("<textarea>");
+            $('body').append($temp.css({opacity: 0, zIndex: -9999}));
+
+            $temp.val(value).select();
+            document.execCommand("copy");
+            $temp.remove();
+        }
+
         return this.each(function () {
 
             var basicConfigs = $.extend({}, defaults, options);
@@ -83,7 +92,9 @@
             var buttons = $('<div>');
             var copyToClipboardButton = $('<div>Copy to clipboard</div>');
             $(this).prepend(buttonsWrapper.addClass("codemirror-buttons-wrapper").append(
-                buttons.addClass("codemirror-buttons").append(copyToClipboardButton.addClass("codemirror-button"))
+                buttons.addClass("codemirror-buttons").append(
+                    copyToClipboardButton.addClass("codemirror-button").addClass("copy-to-clipboard")
+                )
             ));
 
             buttonsWrapper.css('pointer-events', 'none');
@@ -95,6 +106,10 @@
 
             $(this).mouseleave(function () {
                 $(this).children('.codemirror-buttons-wrapper').first().hide();
+            });
+
+            $(this).find('.copy-to-clipboard').click(function () {
+                copyToClipboard($(this).parent().parent().parent().codemirror().getValue());
             });
         });
     };
