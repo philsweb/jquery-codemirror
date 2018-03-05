@@ -1,54 +1,71 @@
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<head>
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
-<script src="bower_components/codemirror/lib/codemirror.js"></script>
-<link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
-<script src="bower_components/codemirror/mode/xml/xml.js"></script>
+    <script src="bower_components/codemirror/lib/codemirror.js"></script>
+    <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
+    <script src="bower_components/codemirror/mode/xml/xml.js"></script>
 
-<script src="philsweb.jquery.codemirror.js"></script>
+    <script src="philsweb.jquery.codemirror.js"></script>
+    <link rel="stylesheet" href="philsweb.codemirror.css">
 
-TODO: create demo, write README, minify
+    <style>
+        .code-snippet-group-1 {
+            margin: 10px;
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+            display: inline-block;
+        }
 
-<div class="margin10 code-snippet" data-test style="width:250px;height:300px;border:1px solid black;"></div>
+        .code-snippet-group-2 {
+            margin: 10px;
+            width: 802px;
+            height: 250px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
 
-<div class="margin10 code-snippet" codemirror-config='{"showCursorWhenSelecting": true, "readOnly": true, "value": "Hello world"}'
-     style="width:350px;height:150px;border:1px solid black;"></div>
+<body>
 
-<div class="margin10 code-snippet" data-no-lines style="width:500px;height:100px;border:1px solid black;"></div>
+<h3>'philsweb.jquery-codemirror' Demo</h3>
 
-<style>
-    .margin10 {
-        margin: 10px;
-    }
+<div class="code-snippet-group-1" first></div>
 
-    .CodeMirror {
-        height: inherit;
-    }
-</style>
+<div class="code-snippet-group-1" second
+     codemirror-config='{"cursorHeight": ".5", "autofocus": true, "value": " Hello world"}'></div>
+
+<div class="code-snippet-group-1" third></div>
+
+<div class="code-snippet-group-2" codemirror-config='{"firstLineNumber": -5}'></div>
+
+</body>
 
 <script>
     $(function () {
 
-        $('.code-snippet').codemirrorInit({readOnly: "nocursor"});
+        $('.code-snippet-group-1').codemirrorInit();
 
-        $('.code-snippet[data-test]').codemirror().setValue('Any string');
+        // codemirror() returns setValue(string), getValue(), setOption(option, value), setOptions(optionsObject)
+        console.log($('.code-snippet-group-1[second]').codemirror().getValue());
 
-        console.log($('.code-snippet[data-test]').codemirror().getValue());
+        // Original CodeMirror object can be accessed by $.data(element, 'codemirror')
+        console.log($.data($('.code-snippet-group-1[second]')[0], 'codemirror').getValue());
 
-        var elements = $('.code-snippet');
-
-        var increment = 1;
-
-        elements.each(function (key, element) {
-
-            $.data(element, 'codemirror').setValue('Any' + increment++);
-            $(element).codemirror().setValue('New' + increment++);
-
+        // Iterate elements
+        $('.code-snippet-group-1').each(function (key, element) {
+            if (element !== $('.code-snippet-group-1[second]')[0]) {
+                $(element).codemirror().setValue('Any string');
+                var value = $(element).codemirror().getValue();
+                $.data(element, 'codemirror').setValue(value + ' here');
+            }
         });
 
-        $('.code-snippet[data-no-lines]').codemirror().setOption('lineNumbers', false);
+        $('.code-snippet-group-1[first]').codemirror().setOption('lineNumbers', false);
 
-        $('.code-snippet[data-no-lines]').codemirror().setOptions({lineNumbers: true, readOnly: true});
+        $('.code-snippet-group-1[third]').codemirror().setOptions({readOnly: true, firstLineNumber: 3});
 
-        $.data($('.code-snippet[data-no-lines]')[0], 'codemirror').focus();
+
+        $('.code-snippet-group-2').codemirrorInit({value: "<div> Hello world </div>"});
     });
 </script>
