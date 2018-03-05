@@ -35,7 +35,7 @@ CodeMirror object is initialized and saved for each element via `$.data(element,
 You can access it and use as specified in CodeMirror manual
 
 ```
-$.data($(...)][0], 'codemirror).getValue()
+$.data($(...)][0], 'codemirror').getValue()
 ```
 
 Plugin itself adds `setValue(string), getValue(), setOption(option, value), setOptions(optionsObject)`
