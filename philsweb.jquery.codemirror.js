@@ -40,7 +40,7 @@
         };
 
         function getLocalConfigs(element) {
-            var configJson = $(element).attr('data-codemirror-config');
+            var configJson = $(element).attr('codemirror-config');
 
             if (configJson === undefined) {
                 return {};
