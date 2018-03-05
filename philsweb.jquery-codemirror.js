@@ -78,6 +78,21 @@
 
             $.data(this, 'codemirror', CodeMirror(this, configs));
 
+            // Buttons
+            var buttonsWrapper = $('<div>');
+            var buttons = $('<div>');
+            var copyToClipboardButton = $('<div>Copy to clipboard</div>');
+            $(this).prepend(buttonsWrapper.addClass("codemirror-buttons-wrapper").append(
+                buttons.addClass("codemirror-buttons").append(copyToClipboardButton.addClass("codemirror-button"))
+            ));
+
+            $(this).mouseenter(function () {
+                $(this).children('.codemirror-buttons-wrapper').first().show();
+            });
+
+            $(this).mouseleave(function () {
+                $(this).children('.codemirror-buttons-wrapper').first().hide();
+            });
         });
     };
 

@@ -1,3 +1,21 @@
-.CodeMirror {
-    height: inherit;
+.codemirror-buttons-wrapper {
+    position: relative;
+    z-index: 9999; /* @todo Should be configured */
+    display: none;
+}
+
+.codemirror-buttons {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(255, 255, 255, .75);
+}
+
+.codemirror-button {
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+}
+
+.codemirror-button:hover {
+    font-weight: bold;
 }
