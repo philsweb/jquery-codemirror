@@ -20,6 +20,12 @@
     float: right;
 }
 
-.codemirror-button:hover {
-    font-weight: bold;
+.copy-to-clipboard{
+    width:15px;
+    height:15px;
+    background-image: url("img/icon.copy.png");
+}
+
+.copy-to-clipboard:hover{
+    background-image: url("img/icon.copy.hover.png");
 }

@@ -90,7 +90,7 @@
             // Buttons
             var buttonsWrapper = $('<div>');
             var buttons = $('<div>');
-            var copyToClipboardButton = $('<div>Copy to clipboard</div>');
+            var copyToClipboardButton = $('<div title="Copy to clipboard">');
             $(this).prepend(buttonsWrapper.addClass("codemirror-buttons-wrapper").append(
                 buttons.addClass("codemirror-buttons").append(
                     copyToClipboardButton.addClass("codemirror-button").addClass("copy-to-clipboard")
