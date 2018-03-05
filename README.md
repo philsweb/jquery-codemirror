@@ -1,3 +1,7 @@
+# jQuery Codemirror Plugin
+
+http://codemirror.net/
+
 ### Install
 
 `bower install philsweb.jquery-codemirror --save`

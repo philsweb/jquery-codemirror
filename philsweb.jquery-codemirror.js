@@ -1,3 +1,11 @@
+/*!
+ CodeMirror jQuery Plugin
+ @name philsweb.jquery-codemirror.js
+ @description a jQuery plugin for using CodeMirror
+ @version 1.0.0
+ @copyright (c) 2018 Philipp Nikolajev (http://nikolajev.ee)
+ @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
+ */
 (function ($) {
     $.fn.codemirrorInit = function (options) {
 
