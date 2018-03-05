@@ -8,6 +8,8 @@ http://codemirror.net/
 
 ### Usage
 
+In order to make CodeMirror work correctly, do not forget to start your HTML page with `<!doctype html>`
+
 ##### Initialize
 
 `options` can be `null` or contain original CodeMirror settings

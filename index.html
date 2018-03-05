@@ -1,3 +1,5 @@
+<!doctype html>
+
 <head>
     <script src="bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -5,18 +7,14 @@
     <link rel="stylesheet" href="bower_components/codemirror/lib/codemirror.css">
     <script src="bower_components/codemirror/mode/xml/xml.js"></script>
 
-    <script src="philsweb.jquery-codemirror.js"></script>
+    <script src="philsweb.jquery-codemirror.min.js"></script>
     <link rel="stylesheet" href="philsweb.codemirror.css">
 
     <style>
-        .CodeMirror {
-            height: inherit;
-        }
-
         .code-snippet-group-1 {
+            vertical-align:top;
             margin: 10px;
             width: 250px;
-            height: 150px;
             border: 1px solid black;
             display: inline-block;
         }
@@ -24,7 +22,6 @@
         .code-snippet-group-2 {
             margin: 10px;
             width: 802px;
-            height: 250px;
             border: 1px solid black;
         }
 
@@ -38,7 +35,7 @@
 
 <h3>'philsweb.jquery-codemirror' Demo</h3>
 
-<div class="code-snippet-group-1" first></div>
+<div class="code-snippet-group-1" first style="min-height:50px;"></div>
 
 <div class="code-snippet-group-1" second
      codemirror-config='{"cursorHeight": ".5", "autofocus": true, "value": " Hello world"}'></div>
@@ -74,6 +71,6 @@
         $('.code-snippet-group-1[third]').codemirror().setOptions({readOnly: true, firstLineNumber: 3});
 
 
-        $('.code-snippet-group-2').codemirrorInit({value: "<div> Hello world </div>"});
+        $('.code-snippet-group-2').codemirrorInit({value: "<div> Hello world </div>\n\n\n"});
     });
 </script>

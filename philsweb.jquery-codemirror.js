@@ -86,6 +86,9 @@
                 buttons.addClass("codemirror-buttons").append(copyToClipboardButton.addClass("codemirror-button"))
             ));
 
+            buttonsWrapper.css('pointer-events', 'none');
+            copyToClipboardButton.css('pointer-events', 'auto');
+
             $(this).mouseenter(function () {
                 $(this).children('.codemirror-buttons-wrapper').first().show();
             });
