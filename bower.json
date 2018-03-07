@@ -1,10 +1,10 @@
 {
-  "name": "philsweb.jquery-codemirror",
-  "homepage": "https://github.com/philsweb/philsweb.jquery-codemirror",
+  "name": "jquery.codemirror",
+  "homepage": "https://github.com/philsweb/jquery-codemirror",
   "authors": [
     "Philipp Nikolajev <philipp.nikolajev@gmail.com>"
   ],
-  "description": "jQuery plugin, CodeMirror wrapper. codemirror.net",
+  "description": "jQuery plugin, CodeMirror wrapper. https://codemirror.net",
   "main": "",
   "keywords": [
     "jquery",
