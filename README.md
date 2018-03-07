@@ -45,13 +45,13 @@ When `auto`, CodeMirror container is auto resized. (Container's CSS parameter `h
 When `inherit`, CodeMirror container is not resized, scroll-bar appears. (Container's CSS `height` value should not be `auto`! )
 
 
-You can set CodeMirror configs in DOM element attribute `codemirror-config` or `codemirror` in JSON format. Latest is preferred.
+You can set CodeMirror configs in DOM element attribute `codemirror-config` or `codemirror` in JSON format. Last one is preferred when both used.
 
 ``` 
 <div codemirror='{"autofocus": true, "value": "Hello world"}'></div>
 ```
 
-You can set plugin configs in DOM element attribute `jquery-codemirror-config` or `jquery-codemirror` in JSON format. Latest is preferred.
+You can set plugin configs in DOM element attribute `jquery-codemirror-config` or `jquery-codemirror` in JSON format. Last one is preferred when both used.
 
 ``` 
 <div jquery-codemirror='{"height": "inherit"}'></div>
@@ -67,10 +67,11 @@ You can access it and use as specified in CodeMirror manual
 $.data($(...)][0], 'codemirror').getValue()
 ```
 
-Plugin itself adds `setValue(string), getValue(), setOption(option, value), setOptions(optionsObject)`
+Plugin itself adds `setValue(string), getValue(), setOption(option, value), setOptions(optionsObject)`. You can access them after initialization is done.
 
 ``` 
-$(...).codemirror().getValue()
+$(...).codemirrorInit();
+$(...).codemirror().getValue();
 ```
 
 `NB!` Plugin's options (height) cannot be set outside initialization (yet). 
