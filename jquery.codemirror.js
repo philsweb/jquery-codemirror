@@ -1,6 +1,6 @@
 /*!
  CodeMirror jQuery Plugin
- @name philsweb.jquery-codemirror.js
+ @name  jquery.codemirror.js
  @description a jQuery plugin for using CodeMirror
  @version 1.0.0
  @copyright (c) 2018 Philipp Nikolajev (http://nikolajev.ee)
