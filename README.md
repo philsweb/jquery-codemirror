@@ -12,13 +12,15 @@ In order to make CodeMirror work correctly, do not forget to start your HTML pag
 
 ##### Initialize
 
-`options` can be `null` or contain original CodeMirror settings
+`codemirrorOptions` can be `null` or contain original CodeMirror settings
+
+`jqueryCodemirroOptions` can be `null` (ignored)
 
 ```
- $(...).codemirrorInit(options);
+ $(...).codemirrorInit(codemirrorOptions, jqueryCodemirrorOptions);
 ```
 
-`defaults` are:
+`codemirrorDefaults` are:
 
 ```
 mode: "text/html",
@@ -28,10 +30,29 @@ lineWrapping: true
 
 `NB!` Do not forget to add required mode `mode/xml/xml.js`
 
-You can set configs in DOM element attribute `codemirror-config`
+`jqueryCodemirrorDefaults` are:
+
+```
+height: "auto"; (Set in CSS)
+```
+
+Height options are `auto` and `inherit`
+
+When `auto`, CodeMirror container is auto resized. (Container's CSS parameter `height` value should be `auto`! May have `min-height`, should not ave `max-height`)
+
+When `inherit`, CodeMirror container is not resized, scroll-bar appears. (Container's CSS `height` value should not be `auto`! )
+
+
+You can set CodeMirror configs in DOM element attribute `codemirror-config` or `codemirror`. Latest is preferred.
 
 ``` 
-<div codemirror-config='{"autofocus": true, "value": "Hello world"}'></div>
+<div codemirror='{"autofocus": true, "value": "Hello world"}'></div>
+```
+
+You can set plugin configs in DOM element attribute `jquery-codemirror-config` or `jquery-codemirror`. Latest is preferred.
+
+``` 
+<div jquery-codemirror='{"height": "inherit"}'></div>
 ```
 
 ##### CodeMirror methods

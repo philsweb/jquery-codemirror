@@ -4,7 +4,7 @@
 
 .codemirror-buttons-wrapper {
     position: relative;
-    z-index: 9999; /* @todo Should be configured */
+    z-index: 9999;
     display: none;
 }
 

@@ -22,6 +22,21 @@
         .code-snippet-group-2 {
             margin: 10px;
             width: 802px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        .code-snippet-group-2 {
+            margin: 10px;
+            width: 802px;
+            height: 150px;
+            border: 1px solid black;
+        }
+
+        .code-snippet-group-3 {
+            margin: 10px;
+            width: 802px;
+            height: 150px;
             border: 1px solid black;
         }
 
@@ -35,14 +50,18 @@
 
 <h3>'philsweb.jquery-codemirror' Demo</h3>
 
-<div class="code-snippet-group-1" first style="min-height:50px;"></div>
+<div class="code-snippet-group-1" first style="min-height:100px;"></div>
 
 <div class="code-snippet-group-1" second
      codemirror-config='{"cursorHeight": ".5", "autofocus": true, "value": " Hello world"}'></div>
 
-<div class="code-snippet-group-1" third></div>
+<div class="code-snippet-group-1" third jquery-codemirror-config='{"height":"inherit"}' style="height:150px;"></div>
 
-<div class="code-snippet-group-2" codemirror-config='{"firstLineNumber": -5}'></div>
+
+<div class="code-snippet-group-2" jquery-codemirror='{"height":"inherit"}' codemirror='{"firstLineNumber": -5}'></div>
+
+
+<div class="code-snippet-group-3"></div>
 
 </body>
 
@@ -72,5 +91,7 @@
 
 
         $('.code-snippet-group-2').codemirrorInit({value: "<div> Hello world </div>\n\n\n"});
+
+        $('.code-snippet-group-3').codemirrorInit({value: "<div> Hello world </div>\n\n\n"}, {height: "inherit"});
     });
 </script>

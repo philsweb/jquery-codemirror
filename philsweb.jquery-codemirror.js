@@ -7,7 +7,7 @@
  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
 (function ($) {
-    $.fn.codemirrorInit = function (options) {
+    $.fn.codemirrorInit = function (codemirrorOptions, jqueryCodemirrorOptions) {
 
         $(this).init.prototype = $.extend({}, $(this).init.prototype, {
 
@@ -41,15 +41,30 @@
             }
         });
 
-        var defaults = {
+        // Defaults
+
+        var codemirrorDefaults = {
             mode: "text/html",
             lineNumbers: true,
             lineWrapping: true
         };
 
-        function getLocalConfigs(element) {
-            var configJson = $(element).attr('codemirror-config');
 
+        // Private methods
+
+        function getConfigAttrTitle(element, preferredTitle) {
+            if ($(element).is("[" + preferredTitle + "]")) {
+                return preferredTitle;
+            }
+
+            if ($(element).is("[" + preferredTitle + "-config" + "]")) {
+                return preferredTitle + "-config";
+            }
+
+            return null;
+        }
+
+        function parseJsonConfig(configJson) {
             if (configJson === undefined) {
                 return {};
             }
@@ -67,7 +82,24 @@
             }
 
             return {};
+        }
 
+        function getCodemirrorElementConfigs(element) {
+
+            var codemirrorConfigAttrTitle = getConfigAttrTitle(element, 'codemirror');
+
+            var configJson = (codemirrorConfigAttrTitle === null) ? undefined : $(element).attr(codemirrorConfigAttrTitle);
+
+            return parseJsonConfig(configJson);
+        }
+
+        function getJqueryCodemirrorElementConfigs(element) {
+
+            var codemirrorConfigAttrTitle = getConfigAttrTitle(element, 'jquery-codemirror');
+
+            var configJson = (codemirrorConfigAttrTitle === null) ? undefined : $(element).attr(codemirrorConfigAttrTitle);
+
+            return parseJsonConfig(configJson);
         }
 
         function copyToClipboard(value) {
@@ -79,13 +111,18 @@
             $temp.remove();
         }
 
+        // Element iteration
+
         return this.each(function () {
 
-            var basicConfigs = $.extend({}, defaults, options);
-            var localConfigs = getLocalConfigs(this);
-            var configs = $.extend({}, basicConfigs, localConfigs);
+            var basicCodemirrorConfigs = $.extend({}, codemirrorDefaults, codemirrorOptions);
+            var elementCodemirrorConfigs = getCodemirrorElementConfigs(this);
+            var codemirrorConfigs = $.extend({}, basicCodemirrorConfigs, elementCodemirrorConfigs);
 
-            $.data(this, 'codemirror', CodeMirror(this, configs));
+            $.data(this, 'codemirror', CodeMirror(this, codemirrorConfigs));
+
+            var jqueryCodemirrorConfigs = $.extend({}, jqueryCodemirrorOptions, getJqueryCodemirrorElementConfigs(this));
+            $(this).children('.CodeMirror').css(jqueryCodemirrorConfigs);
 
             // Buttons
             var buttonsWrapper = $('<div>');
