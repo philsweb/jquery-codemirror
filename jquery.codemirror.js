@@ -2,8 +2,8 @@
  CodeMirror jQuery Plugin
  @name  jquery.codemirror.js
  @description a jQuery plugin for using CodeMirror
- @version 1.0.0
- @copyright (c) 2018 Philipp Nikolajev (http://nikolajev.ee)
+ @version 1.0.2
+ @copyright (c) 2018 Philipp Nikolajev (https://nikolajev.ee)
  @license Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
  */
 (function ($) {
