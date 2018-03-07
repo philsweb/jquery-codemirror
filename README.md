@@ -61,9 +61,10 @@ You can set plugin configs in DOM element attribute `jquery-codemirror-config` o
 
 CodeMirror object is initialized and saved for each element via `$.data(element, 'codemirror')`
 
-You can access it and use as specified in CodeMirror manual
+You can access it and use as specified in CodeMirror manual (after initialization is done)
 
 ```
+$(...).codemirrorInit();
 $.data($(...)][0], 'codemirror').getValue()
 ```
 
